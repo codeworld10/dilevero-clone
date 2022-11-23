@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Categories from "../Components/Categories";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import Featured from "../Components/Featured";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -63,6 +64,9 @@ const HomeScreen = () => {
         />
       </View>
       <Categories />
+      <View>
+      <Featured />
+      </View>
     </SafeAreaView>
   );
 };
