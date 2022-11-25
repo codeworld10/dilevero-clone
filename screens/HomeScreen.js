@@ -1,14 +1,20 @@
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Categories from "../Components/Categories";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import Featured from "../Components/Featured";
+import Featpro from "../Components/Featpro";
+
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView>
+    <SafeAreaView
+    style={{
+      flex: 1,
+      backgroundColor: "white",
+    }}
+    >
       <View
         style={{
           display: "flex",
@@ -35,6 +41,7 @@ const HomeScreen = () => {
           flexDirection: "row",
           alignItems: "center",
           paddingHorizontal: 15,
+          marginTop: 10,
         }}
       >
         <View
@@ -48,7 +55,12 @@ const HomeScreen = () => {
             borderRadius: 5,
           }}
         >
-          <Ionicons style={{paddingHorizontal:5}} name="search-outline" size={22} color="grey" />
+          <Ionicons
+            style={{ paddingHorizontal: 5 }}
+            name="search-outline"
+            size={22}
+            color="grey"
+          />
           <TextInput
             keyboardType="default"
             autoCapitalize="none"
@@ -56,17 +68,14 @@ const HomeScreen = () => {
             placeholder="Search for food or restaurants"
           />
         </View>
-        <Ionicons
-         
-          name="options-outline"
-          size={24}
-          color="#00CCBB"
-        />
+        <Ionicons name="options-outline" size={24} color="#00CCBB" />
       </View>
+      <ScrollView>
       <Categories />
-      <View>
-      <Featured />
-      </View>
+      <Featpro title="Offers near you" description="Why not support your local restaurant today." />
+      <Featpro title="Offers near you" description="Why not support your local restaurant today." />
+      <Featpro title="Offers near you" description="Why not support your local restaurant today." />
+    </ScrollView>
     </SafeAreaView>
   );
 };
