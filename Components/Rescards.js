@@ -15,12 +15,12 @@ const Rescards = ({
 }) => {
   return (
     <TouchableOpacity style={{margin:3, backgroundColor:"white", shadowOpacity:100, shadowColor:"grey"}}>
-    <View style={{paddingHorizontal:5,}}>
+    <View style={{paddingHorizontal:5, height:270}}>
     <Image
     style={{width: 200, height: 200, borderRadius:10,}}
     source={{uri: imgUrl}}
     />
-    <Text style={{fontSize:16, fontWeight:"bold", paddingVertical:3}}>{title}</Text>
+    <Text style={{fontSize:16, fontWeight:"bold", paddingVertical:3,}}>{title}</Text>
     <Text>{rating} . {genre}</Text>
     <Text>{adress}</Text>
     <Text>{shortDescription}</Text>

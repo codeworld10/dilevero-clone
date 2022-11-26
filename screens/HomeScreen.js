@@ -4,10 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Categories from "../Components/Categories";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import Featpro from "../Components/Featpro";
+import React from "react";
+
 
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  
   return (
     <SafeAreaView
     style={{
@@ -73,8 +76,8 @@ const HomeScreen = () => {
       <ScrollView>
       <Categories />
       <Featpro title="Offers near you" description="Why not support your local restaurant today." />
-      <Featpro title="Offers near you" description="Why not support your local restaurant today." />
-      <Featpro title="Offers near you" description="Why not support your local restaurant today." />
+      <Featpro title="Featured" description="Why not support your local restaurant today." />
+      <Featpro title="Tasty Discounts" description="Why not support your local restaurant today." />
     </ScrollView>
     </SafeAreaView>
   );
