@@ -2,6 +2,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import React,{useState} from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 
 const Dishes = [
   {
@@ -11,34 +12,7 @@ const Dishes = [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem.",
     image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
   },
-  {
-    id: 2,
-    name: "Pizza",
-    price : 10,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem.",
-    image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-  },
-  {
-    id: 3,
-    name: "Chicken",
-    price : 10,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem.",
-    image:"https://images.unsplash.com/photo-1606728035253-49e8a23146de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNoaWNrZW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-  },
-  {
-    id: 4,
-    name: "Biryani",
-    price : 10,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem.",
-    image:"https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmlyeWFuaXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-  },
-  {
-    id: 5,
-    name: "Beef",
-    price : 10,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam mauris, eget aliquam nisl nunc vel lorem.",
-    image:"https://images.unsplash.com/photo-1608877907149-a206d75ba011?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJlZWZ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-  },
+ 
 ]
 
 
@@ -57,6 +31,12 @@ const RestaurantScreen = () => {
     },
   } = useRoute();
 const [selectedDish,setSelectedDish] = useState(false)
+const [counter, setCounter] = useState(1);
+const incrementCounter = () => setCounter(counter + 1);
+let decrementCounter = () => setCounter(counter - 1);
+if(counter<=0) {
+  decrementCounter = () => setCounter(0);
+}
   return (
     <SafeAreaView>
     <ScrollView>
@@ -104,10 +84,10 @@ const [selectedDish,setSelectedDish] = useState(false)
       <Text style={{fontSize:17, fontWeight:"bold",}}>Menu</Text>
         
       </View>
-     
       <View style={{paddingHorizontal:15,}}>
       
      {Dishes.map((dish) => (
+      <>
       <View style={{paddingVertical:10}}  key={dish.id}>
       <Text style={{fontSize:18, fontWeight:"bold"}}>{dish.name}</Text>
       <TouchableOpacity onPress={() => setSelectedDish(!selectedDish)}>
@@ -119,22 +99,30 @@ const [selectedDish,setSelectedDish] = useState(false)
       </View>
       <Text style={{fontWeight:"bold", fontSize:14}}>{dish.price}$</Text>
       </TouchableOpacity>
+    
+      
+      </View> 
       <View>
       {selectedDish && (
         
+         <View  style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
          <View>
-         <View>
-         <TouchableOpacity>
-         <Text>--</Text>
+         <TouchableOpacity onPress={incrementCounter}>
+         <AntDesign name="pluscircle" size={28} color="#00CCBB" />
+        
          </TouchableOpacity>
          </View>
+         <Text style={{paddingHorizontal:5}}>{counter}</Text>
+         <TouchableOpacity onPress={decrementCounter} style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
+         <AntDesign name="minuscircle" size={28} color="#00CCBB" />
+         </TouchableOpacity>
          </View>
     
         )}
-      </View>
-      
-      </View>  
+      </View> 
+      </>
   ))}
+ 
  
       </View>
       </ScrollView>
