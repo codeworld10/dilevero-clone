@@ -21,10 +21,14 @@ const Featpro = ({ title, description }) => {
      <Rescards 
      id="1"
      imgUrl="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-      title="Yummy Food"
+      title="Tandoori Chicken"
         rating="4.5"
-        genre="Pakistani"
+        genre=""
         adress="Nearby Street 1"
+        shortDescription="This is your restaurant short description, Support your local restaurant today."
+        dishes="Chicken Biryani"
+        long="50.00"
+        lat="-19.00"
      
      />
      <Rescards 
@@ -32,8 +36,9 @@ const Featpro = ({ title, description }) => {
      imgUrl="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
      title="Yummy Food"
      rating="4.5"
-     genre="Pakistani"
+     genre=""
      adress="Nearby Street 1"
+
      />
      <Rescards 
      id="3"
@@ -42,6 +47,10 @@ const Featpro = ({ title, description }) => {
      rating="4.5"
      genre="Pakistani"
      adress="Nearby Street 1"
+      shortDescription="This is your restaurant short description"
+      dishes="Chicken Biryani"
+      long="50.00"
+      lat="-19.00"
      />
     
     </ScrollView>

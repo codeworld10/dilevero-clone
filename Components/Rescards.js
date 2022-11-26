@@ -1,5 +1,6 @@
 import { View, Text, Image, TouchableOpacity, } from 'react-native'
 import React from 'react'
+import { useNavigation } from "@react-navigation/native";
 
 const Rescards = ({
     id,
@@ -13,8 +14,20 @@ const Rescards = ({
     long,
     lat,
 }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={{margin:3, backgroundColor:"white", shadowOpacity:100, shadowColor:"grey"}}>
+    <TouchableOpacity onPress={() => navigation.navigate("Restaurant", {
+      id,
+      imgUrl, 
+      title,
+      rating,
+      genre,
+      adress,
+      shortDescription,
+      dishes,
+      long,
+      lat,
+    })} style={{margin:3, backgroundColor:"white", shadowOpacity:100, shadowColor:"grey"}}>
     <View style={{paddingHorizontal:5, height:270}}>
     <Image
     style={{width: 200, height: 200, borderRadius:10,}}
@@ -23,10 +36,7 @@ const Rescards = ({
     <Text style={{fontSize:16, fontWeight:"bold", paddingVertical:3,}}>{title}</Text>
     <Text>{rating} . {genre}</Text>
     <Text>{adress}</Text>
-    <Text>{shortDescription}</Text>
-    <Text>{dishes}</Text>
-    <Text>{long}</Text>
-    <Text>{lat}</Text>
+    
     </View>
     </TouchableOpacity>
   )
